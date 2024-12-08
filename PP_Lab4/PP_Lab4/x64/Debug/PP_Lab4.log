@@ -1,0 +1,4 @@
+﻿  PP_Lab4.cpp
+C:\Users\solod\source\repos\PP_Lab4\PP_Lab4\PP_Lab4.cpp(32,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\solod\source\repos\PP_Lab4\PP_Lab4\PP_Lab4.cpp(45,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  PP_Lab4.vcxproj -> C:\Users\solod\source\repos\PP_Lab4\x64\Debug\PP_Lab4.exe
