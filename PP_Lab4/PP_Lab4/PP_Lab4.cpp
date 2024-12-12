@@ -5,7 +5,6 @@
 #include <windows.h>
 
 
-// Послідовне обчислення суми масиву
 int calculateSum(const std::vector<int>& arr) {
     int sum = 0;
     for (int i = 0; i < arr.size(); ++i) {
@@ -14,7 +13,6 @@ int calculateSum(const std::vector<int>& arr) {
     return sum;
 }
 
-// Паралельне обчислення суми масиву
 int calculateSumParallel(const std::vector<int>& arr) {
     int sum = 0;
 
@@ -26,7 +24,6 @@ int calculateSumParallel(const std::vector<int>& arr) {
     return sum;
 }
 
-// Послідовне обчислення парної суми масиву
 void calculatePairwiseSum(std::vector<int>& arr) {
     while (arr.size() > 1) {
         int newSize = arr.size() / 2;
@@ -39,7 +36,6 @@ void calculatePairwiseSum(std::vector<int>& arr) {
     }
 }
 
-// Паралельне обчислення парної суми масиву
 void calculatePairwiseSumParallel(std::vector<int>& arr) {
     while (arr.size() > 1) {
         int newSize = arr.size() / 2;
@@ -53,7 +49,6 @@ void calculatePairwiseSumParallel(std::vector<int>& arr) {
     }
 }
 
-// Пошук мінімального елементу масиву
 void findMinElement(const std::vector<int>& arr, int& minValue, int& minIndex) {
     minValue = arr[0];
     minIndex = 0;
@@ -74,7 +69,7 @@ void findMinElement(const std::vector<int>& arr, int& minValue, int& minIndex) {
         if (localMinValue < minValue) {
 #pragma omp critical
             {
-                if (localMinValue < minValue) { // Повторна перевірка
+                if (localMinValue < minValue) { 
                     minValue = localMinValue;
                     minIndex = localMinIndex;
                 }
@@ -86,12 +81,10 @@ int main() {
     const int size = 500000;
     std::vector<int> arr(size);
 
-    // Заповнення масиву
     for (int i = 0; i < size; ++i) {
         arr[i] = i + 1;
     }
 
-    // Вставка довільного від'ємного числа
     arr[21810] = -100;
 
     int totalSum, minValue, minIndex;
@@ -102,38 +95,37 @@ int main() {
     std::cout.imbue(std::locale());
 
 
-    // Меню вибору завдання
-    std::cout << "Оберiть завдання (1 - Послiдовна сума, 2 - Паралельна сума, "
-        "3 - Послiдовна парна сума, 4 - Паралельна парна сума, "
-        "5 - Пошук мiнiмального елементу): ";
+    std::cout << "ГЋГЎГҐГ°iГІГј Г§Г ГўГ¤Г Г­Г­Гї (1 - ГЏГ®Г±Г«iГ¤Г®ГўГ­Г  Г±ГіГ¬Г , 2 - ГЏГ Г°Г Г«ГҐГ«ГјГ­Г  Г±ГіГ¬Г , "
+        "3 - ГЏГ®Г±Г«iГ¤Г®ГўГ­Г  ГЇГ Г°Г­Г  Г±ГіГ¬Г , 4 - ГЏГ Г°Г Г«ГҐГ«ГјГ­Г  ГЇГ Г°Г­Г  Г±ГіГ¬Г , "
+        "5 - ГЏГ®ГёГіГЄ Г¬iГ­iГ¬Г Г«ГјГ­Г®ГЈГ® ГҐГ«ГҐГ¬ГҐГ­ГІГі): ";
     std::cin >> task;
 
 
     if (task == 1) {
         totalSum = calculateSum(arr);
-        std::cout << "Загальна сума елементiв (послiдовно): " << totalSum << std::endl;
+        std::cout << "Г‡Г ГЈГ Г«ГјГ­Г  Г±ГіГ¬Г  ГҐГ«ГҐГ¬ГҐГ­ГІiГў (ГЇГ®Г±Г«iГ¤Г®ГўГ­Г®): " << totalSum << std::endl;
     }
     else if (task == 2) {
         totalSum = calculateSumParallel(arr);
-        std::cout << "Загальна сума елементiв (паралельно): " << totalSum << std::endl;
+        std::cout << "Г‡Г ГЈГ Г«ГјГ­Г  Г±ГіГ¬Г  ГҐГ«ГҐГ¬ГҐГ­ГІiГў (ГЇГ Г°Г Г«ГҐГ«ГјГ­Г®): " << totalSum << std::endl;
     }
     else if (task == 3) {
         calculatePairwiseSum(arr);
         totalSum = arr[0];
-        std::cout << "Загальна парна сума (послiдовно): " << totalSum << std::endl;
+        std::cout << "Г‡Г ГЈГ Г«ГјГ­Г  ГЇГ Г°Г­Г  Г±ГіГ¬Г  (ГЇГ®Г±Г«iГ¤Г®ГўГ­Г®): " << totalSum << std::endl;
     }
     else if (task == 4) {
         calculatePairwiseSumParallel(arr);
         totalSum = arr[0];
-        std::cout << "Загальна парна сума (паралельно): " << totalSum << std::endl;
+        std::cout << "Г‡Г ГЈГ Г«ГјГ­Г  ГЇГ Г°Г­Г  Г±ГіГ¬Г  (ГЇГ Г°Г Г«ГҐГ«ГјГ­Г®): " << totalSum << std::endl;
     }
     else if (task == 5) {
         findMinElement(arr, minValue, minIndex);
-        std::cout << "Мiнiмальний елемент: " << minValue
-            << ", позицiя: " << minIndex << std::endl;
+        std::cout << "ГЊiГ­iГ¬Г Г«ГјГ­ГЁГ© ГҐГ«ГҐГ¬ГҐГ­ГІ: " << minValue
+            << ", ГЇГ®Г§ГЁГ¶iГї: " << minIndex << std::endl;
     }
     else {
-        std::cerr << "Невiрний вибiр завдання!" << std::endl;
+        std::cerr << "ГЌГҐГўiГ°Г­ГЁГ© ГўГЁГЎiГ° Г§Г ГўГ¤Г Г­Г­Гї!" << std::endl;
     }
 
     return 0;
